@@ -1,9 +1,10 @@
 "use client";
+"use client";
 
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { Button } from "@/components/Button";
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState, useCallback } from "react";
 import Toast, { ToastType } from "./Toast";
 
 type Answer = {
@@ -11,12 +12,15 @@ type Answer = {
   value: string;
 };
 
-export interface QuizStepProps {
+export interface QuizData {
   question: string;
   answers: Answer[];
   correctAnswer: string;
   imagePath: string;
   audioPath: string;
+}
+
+export interface QuizStepProps extends QuizData {
   nextStep: () => void;
 }
 
@@ -28,23 +32,31 @@ export const QuizStep: React.FC<QuizStepProps> = ({
   audioPath,
   nextStep,
 }) => {
-  const [toastMessage, setToastMessage] = useState<string | null>("");
+  const toastMessageRef = useRef<string | null>("");
+  const toastTypeRef = useRef<ToastType>("");
+
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [toastType, setToastType] = useState<ToastType>("");
 
-  const handleAnswer = (answer: string) => {
-    if (answer === correctAnswer) {
-      setToastMessage("Correct");
-      setToastType("Correct");
-      nextStep();
-    } else {
-      setToastMessage("Incorrect");
-      setToastType("Incorrect");
-    }
-  };
-  const handleAudioEnd = () => {
+  const handleAnswer = useCallback(
+    (answer: string) => {
+      if (answer === correctAnswer) {
+        toastMessageRef.current = "Correct";
+        toastTypeRef.current = "Correct";
+        nextStep();
+      } else {
+        toastMessageRef.current = "Incorrect";
+        toastTypeRef.current = "Incorrect";
+      }
+      setToastMessage(toastMessageRef.current);
+      setToastType(toastTypeRef.current);
+    },
+    [correctAnswer, nextStep]
+  );
+
+  const handleAudioEnd = useCallback(() => {
     console.log("Audio finished playing");
-    // Logic to handle end of audio (e.g., play next track)
-  };
+  }, []);
 
   return (
     <div>

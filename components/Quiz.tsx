@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { QuizStep, QuizStepProps } from "./QuizStep";
+import { QuizData, QuizStep, QuizStepProps } from "./QuizStep";
 
 interface QuizProps {
-  steps: QuizStepProps[];
+  steps: QuizData[];
 }
 
 const Quiz: React.FC<QuizProps> = ({ steps }) => {
