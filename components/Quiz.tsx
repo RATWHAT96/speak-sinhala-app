@@ -14,25 +14,9 @@ const Quiz: React.FC<QuizProps> = ({ steps }) => {
     setCurrentStep((prevStep) => Math.min(prevStep + 1, steps.length - 1));
   };
 
-  const prevStep = () => {
-    setCurrentStep((prevStep) => Math.max(prevStep - 1, 0));
-  };
-
   return (
     <div>
-      <QuizStep {...steps[currentStep]} />
-      <div>
-        {currentStep > 0 && (
-          <button className="bg-white" onClick={prevStep}>
-            Previous
-          </button>
-        )}
-        {currentStep < steps.length - 1 && (
-          <button className="bg-white" onClick={nextStep}>
-            Next
-          </button>
-        )}
-      </div>
+      <QuizStep {...steps[currentStep]} nextStep={nextStep} />
     </div>
   );
 };

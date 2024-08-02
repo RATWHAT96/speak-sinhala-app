@@ -13,6 +13,7 @@ export default function Letters() {
       ],
       imagePath: "/testImage.webp",
       audioPath: "/test.mp3",
+      correctAnswer: "A",
     },
     {
       question: "What is the capital of Germany?",
@@ -23,6 +24,7 @@ export default function Letters() {
       ],
       imagePath: "/testImage.webp",
       audioPath: "/test.mp3",
+      correctAnswer: "rome",
     },
   ];
 
