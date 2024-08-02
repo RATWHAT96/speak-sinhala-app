@@ -19,6 +19,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, onEnd }) => {
       onend: onEnd,
     });
     setSound(newSound);
+    newSound.play();
 
     return () => {
       newSound.unload();
