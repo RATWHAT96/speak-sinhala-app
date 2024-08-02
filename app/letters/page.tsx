@@ -13,7 +13,7 @@ export default function Letters() {
       ],
       imagePath: "/testImage.webp",
       audioPath: "/test.mp3",
-      correctAnswer: "A",
+      correctAnswer: "C",
     },
     {
       question: "What is the capital of Germany?",
