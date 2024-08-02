@@ -9,7 +9,7 @@ type Answer = {
   value: string;
 };
 
-interface QuizStepProps {
+export interface QuizStepProps {
   question: string;
   answers: Answer[];
   imagePath: string;

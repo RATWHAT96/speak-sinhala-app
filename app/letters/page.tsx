@@ -1,24 +1,34 @@
+import Quiz from "@/components/Quiz";
 import { QuizStep } from "@/components/QuizStep";
 
 export default function Letters() {
-  const question = "Choose the correct letter";
-  const imagePath = "/testImage.webp";
-  const audioPath = "/test.mp3";
-  const answers = [
-    { buttonLabel: "A", value: "A" },
-    { buttonLabel: "B", value: "B" },
-    { buttonLabel: "C", value: "C" },
-    { buttonLabel: "D", value: "D" },
+  const quizSteps = [
+    {
+      question: "Choose the correct letter",
+      answers: [
+        { buttonLabel: "A", value: "A" },
+        { buttonLabel: "B", value: "B" },
+        { buttonLabel: "C", value: "C" },
+        { buttonLabel: "D", value: "D" },
+      ],
+      imagePath: "/testImage.webp",
+      audioPath: "/test.mp3",
+    },
+    {
+      question: "What is the capital of Germany?",
+      answers: [
+        { buttonLabel: "Berlin", value: "berlin" },
+        { buttonLabel: "Madrid", value: "madrid" },
+        { buttonLabel: "Rome", value: "rome" },
+      ],
+      imagePath: "/testImage.webp",
+      audioPath: "/test.mp3",
+    },
   ];
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-skin-base">
-      <QuizStep
-        question={question}
-        answers={answers}
-        imagePath={imagePath}
-        audioPath={audioPath}
-      />
+      <Quiz steps={quizSteps} />
     </main>
   );
 }

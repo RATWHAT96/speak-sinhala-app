@@ -35,7 +35,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, onEnd }) => {
   };
 
   return (
-    <div>
+    <div className="bg-white w-10">
       <button onClick={togglePlay} disabled={!sound}>
         {playing ? "Pause" : "Play"}
       </button>
